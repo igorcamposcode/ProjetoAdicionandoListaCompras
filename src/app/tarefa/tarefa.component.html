@@ -1,0 +1,38 @@
+
+<div class="input_container" style="text-align: center;">
+  <h1>Lista de compras</h1>
+
+  <!--Adicionar ou Efeituar uma Pesquisa de um produto-->
+
+  <input type="text" placeholder="Adicione ou 'PESQUISE' o produto " #inputTarefa (keyup.enter)="adicionar(inputTarefa.value);inputTarefa.value=''">
+  <button (click)="adicionar(inputTarefa.value); inputTarefa.value=''"><i class="fa fa-plus"></i></button>
+
+  <!--Aqui começará a parte de pesquisa se um determinado item foi adicionado a sua lista e se o mesmo Já foi comprado e adicionado-->
+  
+  <button class="button2" (click)="consultarLista(inputTarefa.value)">Pesquisar</button>
+
+ <table align="center">   
+   <tr>
+      <th>* ID *</th>
+      <th> * Listas de compras *</th>
+      <td> Confirmar </td>
+      <th>* Lixeira * </th>
+   </tr>
+
+    <tr *ngFor="let tarefa of listaTarefas">
+        <th>
+         {{tarefa.id}}
+        </th>
+        <th (click)="completar(tarefa.id)">
+         {{tarefa.nome}} 
+        </th>
+        <td *ngIf="tarefa.concluido"> verificado </td>
+        <button (click)="deletar(tarefa.id)">Deletar</button>
+    </tr>
+ </table>
+
+</div>   
+
+  
+
+
